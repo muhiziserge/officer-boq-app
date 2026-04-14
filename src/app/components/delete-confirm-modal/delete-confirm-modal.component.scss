@@ -1,7 +1,7 @@
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 60;
+  z-index: 10000;
 }
 
 .modal {
@@ -13,7 +13,7 @@
   border-radius: 12px;
   box-shadow: var(--shadow-lg);
   padding: 16px 20px;
-  z-index: 70;
+  z-index: 10001;
   display: flex;
   flex-direction: column;
   gap: 12px;

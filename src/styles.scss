@@ -79,6 +79,7 @@ body {
     color: var(--color-primary-300);
     border: 1px solid var(--color-primary-25);
     &.active, &:hover:not(:disabled) { background: #e4edfa; }
+    &:active:not(:disabled) { background: var(--color-primary-25); }
   }
 
   &--danger {
