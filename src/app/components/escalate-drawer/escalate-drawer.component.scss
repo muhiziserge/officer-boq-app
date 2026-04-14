@@ -204,9 +204,16 @@
 
   &__table {
     width: 100%;
-    min-width: 520px;
+    min-width: 700px;
     border-collapse: collapse;
     border-top: 1px solid var(--color-gray-200);
+
+    // Column widths
+    th:nth-child(1), td:nth-child(1) { min-width: 130px; } // Item
+    th:nth-child(2), td:nth-child(2) { min-width: 140px; } // Desc.
+    th:nth-child(3), td:nth-child(3) { min-width: 80px; }  // Unit
+    th:nth-child(4), td:nth-child(4) { min-width: 90px; }  // Quantity
+    th:nth-child(5), td:nth-child(5) { min-width: 160px; } // Responsible Party
 
     th {
       padding: 12px;
@@ -264,8 +271,6 @@
     &--deleting td { background: var(--color-error-50) !important; }
     &:hover td { background: var(--color-gray-50); }
   }
-
-  &__party { max-width: 80px; overflow: hidden; text-overflow: ellipsis; }
 
   &__actions-cell {
     display: flex;

@@ -82,7 +82,7 @@
                     <td>{{ item.description }}</td>
                     <td>{{ item.unit }}</td>
                     <td>{{ item.quantity }}</td>
-                    <td class="boq__party">{{ item.responsibleParty | slice:0:3 }}...</td>
+                    <td>{{ item.responsibleParty }}</td>
                     <td class="boq__actions-cell">
                       <button class="icon-btn icon-btn--danger" title="Delete" (click)="requestDelete(item)">
                         <i class="fa-regular fa-trash-can"></i>
