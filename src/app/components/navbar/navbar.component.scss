@@ -1,0 +1,120 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 72px;
+  background: var(--color-primary-600);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &-logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.5px;
+    }
+
+    &-gov {
+      color: rgba(255,255,255,0.75);
+    }
+
+    &-role {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      border-left: 1px solid rgba(255,255,255,0.3);
+      padding-left: 8px;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &__office {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+
+    &:hover { background: rgba(255,255,255,0.1); }
+  }
+
+  &__tabs {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.75);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+
+    &:hover { background: rgba(255,255,255,0.1); color: white; }
+
+    &--active {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      font-weight: 600;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+
+    &:hover { background: rgba(255,255,255,0.1); }
+  }
+
+  &__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,22 @@
+<div class="modal-backdrop" (click)="cancel.emit()"></div>
+<div class="modal">
+  <div class="modal__icon-wrap modal__icon-wrap--error">
+    <i class="fa-regular fa-trash-can"></i>
+  </div>
+  <div class="modal__content">
+    <div class="modal__text">
+      <h3 class="modal__title">Delete item</h3>
+      <p class="modal__body">
+        Do you want to delete <strong>"{{ itemName }}"</strong> from the list.<br>
+        This action cannot be reverted
+      </p>
+    </div>
+    <button class="modal__close" (click)="cancel.emit()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <div class="modal__actions">
+    <button class="btn btn--secondary" (click)="cancel.emit()">Cancel</button>
+    <button class="btn btn--danger" (click)="confirm.emit()">Delete</button>
+  </div>
+</div>

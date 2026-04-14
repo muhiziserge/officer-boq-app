@@ -1,0 +1,80 @@
+@use '../delete-confirm-modal/delete-confirm-modal.component' as *;
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+}
+
+.modal {
+  position: fixed;
+  bottom: 80px;
+  right: 780px;
+  width: 544px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  padding: 16px 20px;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+
+    &--error {
+      background: var(--color-error-50);
+      color: var(--color-error-600);
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__text { display: flex; flex-direction: column; gap: 4px; }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-gray-900);
+  }
+
+  &__body {
+    font-size: 14px;
+    color: var(--color-gray-600);
+    line-height: 20px;
+
+    strong { font-weight: 600; color: var(--color-gray-700); }
+  }
+
+  &__close {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--color-gray-500);
+    padding: 4px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    font-size: 16px;
+
+    &:hover { background: var(--color-gray-100); }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+}

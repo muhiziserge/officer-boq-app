@@ -1,0 +1,138 @@
+<div class="details-drawer">
+
+  <!-- Header -->
+  <div class="details-drawer__header">
+    <div class="details-drawer__header-info">
+      <div class="details-drawer__header-icon">
+        <i class="fa-solid fa-circle-info"></i>
+      </div>
+      <div class="details-drawer__header-text">
+        <div class="details-drawer__header-row">
+          <span class="details-drawer__app-id">{{ application.id }}</span>
+          <span class="badge badge--warning">Pending processing</span>
+        </div>
+        <span class="details-drawer__app-service">Birth certificate</span>
+      </div>
+    </div>
+    <button class="details-drawer__close" (click)="close.emit()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <!-- Scrollable body -->
+  <div class="details-drawer__body">
+
+    @if (application.details; as d) {
+      <!-- Application Summary expanded -->
+      <div class="summary-card card">
+        <div class="summary-card__header">
+          <span class="summary-card__title">Application Summary</span>
+          <button class="btn btn--link-primary">
+            <i class="fa-regular fa-eye-slash"></i> Hide details
+          </button>
+        </div>
+
+        <!-- Details grid -->
+        <div class="details-grid">
+
+          <div class="detail-card card">
+            <h4 class="detail-card__title">Personal details</h4>
+            <div class="detail-field">
+              <span class="detail-field__label">National ID</span>
+              <span class="detail-field__value">{{ d.personalDetails.nationalId }}</span>
+            </div>
+            <div class="detail-field">
+              <span class="detail-field__label">Name</span>
+              <span class="detail-field__value">{{ d.personalDetails.name }}</span>
+            </div>
+          </div>
+
+          <div class="detail-card card">
+            <h4 class="detail-card__title">Residence details</h4>
+            <div class="detail-field">
+              <span class="detail-field__label">District:</span>
+              <span class="detail-field__value">{{ d.residenceDetails.district }}</span>
+            </div>
+            <div class="detail-field">
+              <span class="detail-field__label">Sector:</span>
+              <span class="detail-field__value">{{ d.residenceDetails.sector }}</span>
+            </div>
+          </div>
+
+          <div class="detail-card card">
+            <h4 class="detail-card__title">Birth Information</h4>
+            <div class="detail-field">
+              <span class="detail-field__label">Country of birth</span>
+              <span class="detail-field__value">{{ d.birthInformation.countryOfBirth }}</span>
+            </div>
+            <div class="detail-field">
+              <span class="detail-field__label">City of birth:</span>
+              <span class="detail-field__value">{{ d.birthInformation.cityOfBirth }}</span>
+            </div>
+            <div class="detail-field">
+              <span class="detail-field__label">Date of Birth</span>
+              <span class="detail-field__value">{{ d.birthInformation.dateOfBirth }}</span>
+            </div>
+          </div>
+
+          <div class="detail-card card">
+            <h4 class="detail-card__title">Passport &amp; travel details</h4>
+            <div class="detail-field">
+              <span class="detail-field__label">Passport type</span>
+              <span class="detail-field__value">{{ d.passportDetails.passportType }}</span>
+            </div>
+            <div class="detail-field">
+              <span class="detail-field__label">Passport validity</span>
+              <span class="detail-field__value">{{ d.passportDetails.passportValidity }}</span>
+            </div>
+            <div class="detail-field">
+              <span class="detail-field__label">Purpose of travel</span>
+              <span class="detail-field__value">{{ d.passportDetails.purposeOfTravel }}</span>
+            </div>
+            <div class="detail-field">
+              <span class="detail-field__label">Destination country</span>
+              <span class="detail-field__value">{{ d.passportDetails.destinationCountry }}</span>
+            </div>
+            <div class="detail-field">
+              <span class="detail-field__label">Destination city</span>
+              <span class="detail-field__value">{{ d.passportDetails.destinationCity }}</span>
+            </div>
+          </div>
+
+          <div class="detail-card card detail-card--full">
+            <h4 class="detail-card__title">Attachments</h4>
+            @for (att of d.attachments; track $index) {
+              <div class="attachment-row">
+                <div class="attachment-icon">
+                  <i class="fa-regular fa-file"></i>
+                </div>
+                <div>
+                  <div class="attachment-name">{{ att.name }}</div>
+                  <div class="attachment-size">{{ att.size }}</div>
+                </div>
+              </div>
+            }
+          </div>
+
+        </div>
+      </div>
+    }
+
+  </div>
+
+  <!-- Footer actions -->
+  <div class="details-drawer__footer">
+    <button class="btn btn--secondary" (click)="escalate.emit()">
+      <i class="fa-regular fa-circle-check"></i> Escalate
+    </button>
+    <button class="btn btn--secondary" (click)="moreActionsOpen = !moreActionsOpen">
+      More Actions <i class="fa-solid" [class.fa-chevron-up]="moreActionsOpen" [class.fa-chevron-down]="!moreActionsOpen"></i>
+    </button>
+  </div>
+
+  <!-- Collapse tab -->
+  <button class="details-drawer__tab" (click)="close.emit()" title="Collapse">
+    <i class="fa-solid fa-angle-left"></i>
+  </button>
+
+</div>

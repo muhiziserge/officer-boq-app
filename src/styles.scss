@@ -1,0 +1,181 @@
+// Design tokens from Figma
+:root {
+  --color-primary-25:  #F3F6FB;
+  --color-primary-300: #73ACEA;
+  --color-primary-600: #0063CF;
+  --color-primary-700: #004FA6;
+
+  --color-gray-50:  #F9FAFB;
+  --color-gray-100: #F2F4F7;
+  --color-gray-200: #EAECF0;
+  --color-gray-300: #D0D5DD;
+  --color-gray-400: #98A2B3;
+  --color-gray-500: #667085;
+  --color-gray-600: #475467;
+  --color-gray-700: #344054;
+  --color-gray-900: #101828;
+
+  --color-warning-50:  #FFFAEB;
+  --color-warning-700: #B54708;
+
+  --color-error-50:  #FEF3F2;
+  --color-error-600: #D92D20;
+
+  --color-white: #FFFFFF;
+
+  --shadow-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  --shadow-sm: 0px 1px 3px 0px rgba(16, 24, 40, 0.10), 0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+  --shadow-lg: 0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+  --shadow-panel: -4px 0px 12px 0px rgba(15, 37, 60, 0.20);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  color: var(--color-gray-900);
+  background: var(--color-gray-50);
+  min-height: 100vh;
+}
+
+// Shared button styles
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  cursor: pointer;
+  border: none;
+  padding: 10px 16px;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  &--primary {
+    background: var(--color-primary-600);
+    color: var(--color-white);
+    border: 1px solid var(--color-primary-600);
+    box-shadow: var(--shadow-xs);
+    &:hover:not(:disabled) { background: var(--color-primary-700); }
+  }
+
+  &--secondary {
+    background: var(--color-white);
+    color: var(--color-gray-700);
+    border: 1px solid var(--color-gray-300);
+    box-shadow: var(--shadow-xs);
+    &:hover:not(:disabled) { background: var(--color-gray-50); }
+  }
+
+  &--ghost-primary {
+    background: var(--color-primary-25);
+    color: var(--color-primary-300);
+    border: 1px solid var(--color-primary-25);
+    &.active, &:hover:not(:disabled) { background: #e4edfa; }
+  }
+
+  &--danger {
+    background: var(--color-error-600);
+    color: var(--color-white);
+    border: 1px solid var(--color-error-600);
+    box-shadow: var(--shadow-xs);
+    &:hover:not(:disabled) { background: #b42318; }
+  }
+
+  &--link-primary {
+    background: transparent;
+    color: var(--color-primary-700);
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    font-weight: 600;
+  }
+
+  &--full { width: 100%; }
+  &--sm { padding: 8px 14px; font-size: 14px; }
+}
+
+// Form field
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-gray-700);
+    line-height: 20px;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-gray-300);
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-gray-900);
+    background: var(--color-white);
+    box-shadow: var(--shadow-xs);
+    outline: none;
+    line-height: 24px;
+    transition: border-color 0.15s;
+
+    &::placeholder { color: var(--color-gray-500); }
+    &:focus { border-color: var(--color-primary-600); }
+    &:disabled { background: var(--color-gray-50); cursor: not-allowed; }
+  }
+
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%23667085' stroke-width='1.67' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+  }
+}
+
+// Badge
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  mix-blend-mode: multiply;
+
+  &--warning {
+    background: var(--color-warning-50);
+    color: var(--color-warning-700);
+  }
+}
+
+// Card
+.card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+// Overlay backdrop
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(52, 64, 84, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 40;
+}

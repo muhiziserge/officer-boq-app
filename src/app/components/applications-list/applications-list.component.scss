@@ -1,0 +1,168 @@
+.list-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 24px;
+
+  &__inner {
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  &__header { margin-bottom: 24px; }
+
+  &__title {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--color-gray-900);
+    line-height: 38px;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    color: var(--color-gray-600);
+    margin-top: 4px;
+  }
+
+  &__filters {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+}
+
+.filter-select {
+  padding: 8px 36px 8px 12px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-700);
+  background: white;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%23667085' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+  flex-shrink: 0;
+
+  &:focus { outline: none; border-color: var(--color-primary-600); }
+}
+
+.filter-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 8px;
+  background: white;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-700);
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+  flex-shrink: 0;
+  white-space: nowrap;
+
+  &:hover { background: var(--color-gray-50); }
+  i { color: var(--color-gray-500); }
+}
+
+.filter-search {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 180px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 8px;
+  background: white;
+  box-shadow: var(--shadow-xs);
+  padding: 0 12px;
+
+  &__icon { color: var(--color-gray-500); font-size: 14px; flex-shrink: 0; }
+
+  &__input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 8px 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    color: var(--color-gray-900);
+    min-width: 0;
+
+    &::placeholder { color: var(--color-gray-500); }
+  }
+}
+
+.table-wrap {
+  overflow: hidden;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.app-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+
+  thead tr {
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  th {
+    padding: 12px 24px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-gray-500);
+    line-height: 18px;
+    white-space: nowrap;
+    background: white;
+  }
+
+  td {
+    padding: 16px 24px;
+    font-size: 14px;
+    color: var(--color-gray-600);
+    line-height: 20px;
+    white-space: nowrap;
+  }
+
+  &__row {
+    border-bottom: 1px solid var(--color-gray-200);
+    &:last-child { border-bottom: none; }
+    &:hover td { background: var(--color-gray-50); }
+  }
+
+  &__id, &__applicant { color: var(--color-gray-900); font-weight: 500; }
+
+  &__deadline--overdue { color: #F04438; font-weight: 500; }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  border-top: 1px solid var(--color-gray-200);
+  flex-wrap: wrap;
+  gap: 12px;
+
+  &__controls { display: flex; gap: 12px; }
+
+  &__info {
+    font-size: 14px;
+    color: var(--color-gray-700);
+    font-weight: 500;
+  }
+}

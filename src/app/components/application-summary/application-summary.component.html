@@ -1,0 +1,102 @@
+<div class="summary card">
+  @if (!expanded) {
+    <!-- Collapsed: title + view details -->
+    <div class="summary__collapsed">
+      <span class="summary__title">Application Summary</span>
+      <button class="btn btn--link-primary" (click)="toggleExpand.emit()">
+        <i class="fa-regular fa-eye"></i> View details
+      </button>
+    </div>
+  } @else {
+    <!-- Expanded: full details -->
+    <div class="summary__expanded">
+      <div class="summary__expanded-header">
+        <span class="summary__title">Application Summary</span>
+        <button class="btn btn--link-primary" (click)="toggleExpand.emit()">
+          <i class="fa-regular fa-eye-slash"></i> Hide details
+        </button>
+      </div>
+
+      @if (application.details; as d) {
+        <div class="summary__grid">
+          <div class="summary__card card">
+            <h4>Personal details</h4>
+            <div class="summary__field">
+              <span class="summary__label">National ID</span>
+              <span class="summary__value">{{ d.personalDetails.nationalId }}</span>
+            </div>
+            <div class="summary__field">
+              <span class="summary__label">Name</span>
+              <span class="summary__value">{{ d.personalDetails.name }}</span>
+            </div>
+          </div>
+
+          <div class="summary__card card">
+            <h4>Residence details</h4>
+            <div class="summary__field">
+              <span class="summary__label">District:</span>
+              <span class="summary__value">{{ d.residenceDetails.district }}</span>
+            </div>
+            <div class="summary__field">
+              <span class="summary__label">Sector:</span>
+              <span class="summary__value">{{ d.residenceDetails.sector }}</span>
+            </div>
+          </div>
+
+          <div class="summary__card card">
+            <h4>Birth Information</h4>
+            <div class="summary__field">
+              <span class="summary__label">Country of birth</span>
+              <span class="summary__value">{{ d.birthInformation.countryOfBirth }}</span>
+            </div>
+            <div class="summary__field">
+              <span class="summary__label">City of birth:</span>
+              <span class="summary__value">{{ d.birthInformation.cityOfBirth }}</span>
+            </div>
+            <div class="summary__field">
+              <span class="summary__label">Date of Birth</span>
+              <span class="summary__value">{{ d.birthInformation.dateOfBirth }}</span>
+            </div>
+          </div>
+
+          <div class="summary__card card">
+            <h4>Passport &amp; travel details</h4>
+            <div class="summary__field">
+              <span class="summary__label">Passport type</span>
+              <span class="summary__value">{{ d.passportDetails.passportType }}</span>
+            </div>
+            <div class="summary__field">
+              <span class="summary__label">Passport validity</span>
+              <span class="summary__value">{{ d.passportDetails.passportValidity }}</span>
+            </div>
+            <div class="summary__field">
+              <span class="summary__label">Purpose of travel</span>
+              <span class="summary__value">{{ d.passportDetails.purposeOfTravel }}</span>
+            </div>
+            <div class="summary__field">
+              <span class="summary__label">Destination country</span>
+              <span class="summary__value">{{ d.passportDetails.destinationCountry }}</span>
+            </div>
+            <div class="summary__field">
+              <span class="summary__label">Destination city</span>
+              <span class="summary__value">{{ d.passportDetails.destinationCity }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary__card card summary__attachments">
+          <h4>Attachments</h4>
+          @for (att of d.attachments; track $index) {
+            <div class="attachment">
+              <i class="fa-regular fa-file attachment__icon"></i>
+              <div>
+                <div class="attachment__name">{{ att.name }}</div>
+                <div class="attachment__size">{{ att.size }}</div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

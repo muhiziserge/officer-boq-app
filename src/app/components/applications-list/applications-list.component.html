@@ -1,0 +1,105 @@
+<div class="list-page">
+  <div class="list-page__inner">
+
+    <div class="list-page__header">
+      <h1 class="list-page__title">Applications</h1>
+      <p class="list-page__subtitle">Manage your users and their account permissions here.</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="list-page__filters">
+      <select class="filter-select" [(ngModel)]="selectedOffice">
+        <option>Office: Kigali</option>
+        <option>Office: Gasabo</option>
+        <option>Office: Nyarugenge</option>
+      </select>
+
+      <select class="filter-select" [(ngModel)]="selectedService">
+        <option>Any Service</option>
+        <option>Water connection request</option>
+        <option>Birth certificate</option>
+      </select>
+
+      <button class="filter-date">
+        <i class="fa-regular fa-calendar"></i> From date
+      </button>
+
+      <button class="filter-date">
+        <i class="fa-regular fa-calendar"></i> To date
+      </button>
+
+      <div class="filter-search">
+        <i class="fa-solid fa-magnifying-glass filter-search__icon"></i>
+        <input type="text" [(ngModel)]="searchQuery" placeholder="Search application..." class="filter-search__input">
+      </div>
+
+      <button class="btn btn--primary btn--sm" (click)="onSearch()">Search</button>
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrap card">
+      <div class="table-scroll">
+        <table class="app-table">
+          <thead>
+            <tr>
+              <th>Application No</th>
+              <th>Services</th>
+              <th>Applicant</th>
+              <th>Date submitted</th>
+              <th>Office</th>
+              <th>Processing deadline</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (app of applications; track app.id + app.dateSubmitted) {
+              <tr class="app-table__row">
+                <td class="app-table__id">{{ app.id }}</td>
+                <td>{{ app.service }}</td>
+                <td class="app-table__applicant">{{ app.applicant }}</td>
+                <td>{{ app.dateSubmitted }}</td>
+                <td>{{ app.office }}</td>
+                <td [class.app-table__deadline--overdue]="app.isOverdue">{{ app.processingDeadline }}</td>
+                <td>
+                  <button class="btn btn--link-primary" (click)="openDetails(app)">Review</button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <div class="pagination__controls">
+          <button class="btn btn--secondary btn--sm" [disabled]="prevDisabled" (click)="prevPage()">Previous</button>
+          <button class="btn btn--secondary btn--sm" [disabled]="nextDisabled" (click)="nextPage()">Next</button>
+        </div>
+        <span class="pagination__info">Page {{ currentPage }} of {{ totalPages }}</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Backdrop -->
+@if (drawerMode()) {
+  <div class="overlay-backdrop" (click)="closeDrawer()"></div>
+}
+
+<!-- Step 1: Application Details drawer -->
+@if (drawerMode() === 'details' && selectedApplication()) {
+  <app-details-drawer
+    [application]="selectedApplication()!"
+    (close)="closeDrawer()"
+    (escalate)="openEscalate()"
+  />
+}
+
+<!-- Step 2: Escalate drawer -->
+@if (drawerMode() === 'escalate' && selectedApplication()) {
+  <app-escalate-drawer
+    [application]="selectedApplication()!"
+    (close)="closeDrawer()"
+  />
+}
