@@ -6,8 +6,9 @@
 
 .modal {
   position: fixed;
-  bottom: 80px;
-  right: 780px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 544px;
   background: white;
   border-radius: 12px;
